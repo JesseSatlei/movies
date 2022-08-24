@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, DeleteDateColumn, UpdateDateColumn, CreateDateColumn } from "typeorm";
 
 @Entity('movie')
 export class Movie {
@@ -10,4 +10,13 @@ export class Movie {
 
     @Column({ nullable: true })
     description: string;
+
+    @CreateDateColumn()
+    createdAt: string;
+
+    @UpdateDateColumn()
+    updatedAt: string;
+
+    @DeleteDateColumn()
+    deletedAt: string;
 }
