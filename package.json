@@ -1,6 +1,10 @@
 {
   "name": "filmes",
   "version": "0.0.1",
+  "engines": {
+    "node": "16.14.0",
+    "npm": "8.9.0"
+  },
   "description": "",
   "author": "",
   "private": true,
@@ -19,6 +23,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "start:db": "docker run --name filmes -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql:latest",
     "heroku-postbuild": "NODE_ENV=dev npm install --force --omit --no-shrinkwrap && npm run build"
   },
   "dependencies": {
