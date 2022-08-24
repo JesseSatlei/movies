@@ -14,8 +14,13 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const movie = this.userRepository.create(createUserDto);
-    return await this.userRepository.save(movie);
+    const user = await this.userRepository.findOneBy({ name: createUserDto.name });
+
+    if (user) {
+      return 'Usuário já cadastrado';
+    }
+    const userNew = this.userRepository.create(createUserDto);
+    return await this.userRepository.save(userNew);
   }
 
   async findAll() {
@@ -33,13 +38,13 @@ export class UsersService {
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    const movie = await this.userRepository.findOneByOrFail({ id });
+    const user = await this.userRepository.findOneByOrFail({ id });
     await this.userRepository.update(id, updateUserDto);
     return this.userRepository.findOneBy({id});
   }
 
   async remove(id: number) {
-    const movie = await this.userRepository.findOneByOrFail({id});
-    return await this.userRepository.remove(movie);
+    const user = await this.userRepository.findOneByOrFail({id});
+    return await this.userRepository.remove(user);
   }
 }
