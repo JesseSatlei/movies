@@ -1,74 +1,83 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Nesse projeto foi realizado o desenvolvimento de uma api para o gerenciamento de filmes.
 
-## Description
+## Desafio
+Para este desafio foram propostos usar algumas ferramentas, seguem os conhecimentos de cada uma e como foram utilizados:
+* TypeScript - Uma ferramenta pelo qual já possuo bastante conhecimento e utilizo faz um bom tempo
+* Nest.js - Comecei a utilizar essa ferramenta no começo de 2021
+* TypeOrm - Comecei a utilizar essa ferramenta junto com o Nest.js
+* Swagger - Comecei a utilizar no começo de 2021 para realizar a documentação do projeto, mas já tinha um conhecimento prévio dessa ferramenta de alguns anos atrás
+* Docker - Utilizo desde de 2020, mas somente configurações mais básicas, como preparação da máquina e etc.
+* PostgreSql - Tenho um certo conhecimento e já cheguei a fazer alguns projetos com essa tecnologia, mas para o banco de dados o mais comumamente utilizado é o Mysql
+* Redis - Tenho conhecimento, mas não cheguei a utilizar no projeto.
+* Deploy - Devido a alguns problemas enfrentados na utilização do Heroku, o projeto ainda não está em produção
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Ferramentas que precisam ser Instaladas para Utilização
+* NodeJS
+* Npm ou Yarn
+* Nest Globalmente
+* Docker
 
+## Guia de Instalação
+
+O NodeJs pode ser instalado baixando o instalador no site oficial:
+* https://nodejs.org/en/ - Opte pela versão LTS
+
+Npm é instalado automaticamente com o Node.
+
+Para instalar o Yarn rode o seguinte comando:
 ```bash
-$ npm install
+$ npm install -g yarn
 ```
 
-## Running the app
+Para instalar o Nest Globalmente rode o seguinte comando:
+```bash
+$ npm i -g @nestjs/cli
+```
+Para instalar o Docker no Linux, rode os seguintes comandos:
 
 ```bash
-# development
-$ npm run start
+$ sudo apt-get update
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-get install docker.io docker-compose
 
-# watch mode
+# Será baixado uma imagem usada para teste do Docker que retornará um Hello World.
+$ sudo docker run hello-world
+
+# Por meio desse comando seu usuario será colocado no grupo do docker, assim que finalizado o comando será necessário reiniciar a maquina
+$ sudo usermod -aG docker $USER
+```
+
+Depois de Clonado o Projeto, rode o seguinte comando para instalar as dependencias:
+```bash
+$ npm install ou yarn install
+```
+
+## Rodando o Aplicativo
+
+```bash
+# Acesse a pasta docker e depois postgree e rode o seguinte comando:
+$ docker composer up -d
+
+# Irá rodar a aplicação
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
-docker-compose up -d
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+Obs: Não se esqueça de criar o seu .env seguindo o .env.example
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Rotas
 
-## Stay in touch
+Todas as rotas estão disponibilizadas no Swagger da aplicação, junto com os seus Jsons requeridos para a utilização.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Para utilizar das rotas, deverá ser realizado a autentificação do usuário e em seguida o login que vai ser gerado um token para sua conta, adicione esse token no Authorization do Swagger que conseguirá bater nas outras rotas.
 
-## License
-
-Nest is [MIT licensed](LICENSE).

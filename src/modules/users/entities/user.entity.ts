@@ -13,13 +13,13 @@ export class User {
     password: string;
 
     @CreateDateColumn()
-    createdAt: string;
+    createdAt?: string;
 
     @UpdateDateColumn()
-    updatedAt: string;
+    updatedAt?: string;
 
     @DeleteDateColumn()
-    deletedAt: string;
+    deletedAt?: string;
 
     @BeforeInsert()
     hashPassword() {
