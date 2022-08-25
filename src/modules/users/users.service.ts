@@ -23,7 +23,7 @@ export class UsersService {
     return await this.userRepository.save(userNew);
   }
 
-  async findAll() {
+  async findAll(): Promise<User[]> {
     return await this.userRepository.find({
       select: ['id', 'name']
     });
